@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Escola Sem Bullying | Programa de Prevenção</title>
+    <!-- Font Awesome 6 (ícones para redes sociais) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f9ff; /* fundo azul bebê claro */
+            color: #1e2a3e;
+            line-height: 1.5;
+        }
+
+        /* container principal para alinhamento */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========= CABEÇALHO ========= */
+        .header-top {
+            background: white;
+            border-bottom: 2px solid #ffe1a0; /* amarelo suave */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            padding: 16px 0;
+        }
+
+        .header-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 15px 20px;
+        }
+
+        /* lado esquerdo: logo + @escola */
+        .logo-area {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 12px;
+            row-gap: 6px;
+        }
+
+        .logo-text {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #87CEEB 0%, #87CEEB 40%, #FFD966 50%, #FFD966 70%, #E34234 80%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: none;
+            display: inline-block;
+        }
+        /* fallback para navegadores: cores sólidas via span individual */
+        .logo-solid {
+            font-size: 1.9rem;
+            font-weight: 800;
+        }
+        .azul-bebe { color: #89CFF0; }
+        .amarelo { color: #FFD966; }
+        .vermelho { color: #E63946; }
+
+        .email-header {
+            font-size: 0.95rem;
+            background: #eef2fa;
+            padding: 4px 12px;
+            border-radius: 40px;
+            color: #2c3e66;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* endereço (rua, cidade, cep) */
+        .endereco-info {
+            font-size: 0.85rem;
+            background: #fef6e0;
+            padding: 4px 14px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            color: #4a3b1c;
+        }
+        .endereco-info i {
+            color: #E63946;
+            font-size: 0.8rem;
+        }
+
+        /* ========= MENU (9 itens) ========= */
+        .nav-menu {
+            background: #ffffffdd;
+            backdrop-filter: blur(2px);
+            background: white;
+            border-bottom: 1px solid #ffd96680;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .menu-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.2rem;
+            list-style: none;
+            padding: 12px 0;
+        }
+        .menu-list li {
+            margin: 0;
+        }
+        .menu-list a {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 40px;
+            background: transparent;
+            color: #1e4668;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+        }
+        .menu-list a:hover {
+            background: #ffecb3;
+            color: #b13b2e;
+            transform: translateY(-2px);
+        }
+
+        /* ===== CONTEÚDO PRINCIPAL ===== */
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 50px 0 60px;
+            align-items: center;
+        }
+        .texto-lado {
+            flex: 1.2;
+            min-width: 260px;
+        }
+        .texto-lado h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            border-left: 8px solid #E63946;
+            padding-left: 20px;
+            color: #1f3b4c;
+            font-weight: 700;
+        }
+        .texto-lado p {
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            color: #2c3e50;
+            text-align: justify;
+        }
+        .destaque {
+            background: #e9f5fe;
+            padding: 16px 20px;
+            border-radius: 24px;
+            margin-top: 20px;
+            border-left: 6px solid #FFD966;
+        }
+        .imagem-lado {
+            flex: 1;
+            min-width: 260px;
+            text-align: center;
+            background: #fff7ed;
+            border-radius: 48px;
+            padding: 20px 15px;
+            box-shadow: 0 20px 30px -15px rgba(0,0,0,0.1);
+        }
+        .imagem-lado img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 32px;
+            transition: transform 0.3s;
+        }
+        .imagem-lado img:hover {
+            transform: scale(1.02);
+        }
+
+        /* ========= RODAPÉ COM ÍCONES SOCIAIS ========= */
+        .footer {
+            background: #1e2f3f;
+            color: #f0f3f8;
+            margin-top: 60px;
+            padding: 30px 0 25px;
+            border-top-left-radius: 32px;
+            border-top-right-radius: 32px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 42px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            color: #f9f3e2;
+            font-size: 1.9rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            background: rgba(255,255,240,0.1);
+            padding: 8px 16px;
+            border-radius: 60px;
+            backdrop-filter: blur(2px);
+        }
+        .social-icons a span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .social-icons a:hover {
+            color: #FFD966;
+            background: rgba(255,217,102,0.2);
+            transform: translateY(-4px);
+        }
+        .footer-copy {
+            text-align: center;
+            font-size: 0.75rem;
+            border-top: 1px solid #3a546b;
+            padding-top: 20px;
+            margin-top: 10px;
+            color: #bbd4f0;
+        }
+
+        /* ajuste responsivo */
+        @media (max-width: 860px) {
+            .header-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .logo-area {
+                width: 100%;
+            }
+            .menu-list a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            .texto-lado h1 {
+                font-size: 1.8rem;
+            }
+            .social-icons {
+                gap: 20px;
+            }
+            .social-icons a span {
+                display: none;
+            }
+            .social-icons a {
+                font-size: 2rem;
+                padding: 8px 12px;
+            }
+        }
+        @media (max-width: 600px) {
+            .menu-list {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                flex-wrap: nowrap;
+                gap: 4px;
+            }
+            .menu-list li a {
+                white-space: nowrap;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .endereco-info {
+                font-size: 0.75rem;
+            }
+        }
+        button, a {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cabeçalho superior com logo e informações -->
+<div class="header-top">
+    <div class="container header-flex">
+        <div class="logo-area">
+            <!-- Logo com cores: azul bebê, amarelo, vermelho -->
+            <div class="logo-solid">
+                <span class="azul-bebe">Escola</span>
+                <span class="amarelo"> Sem </span>
+                <span class="vermelho">Bullying</span>
+            </div>
+            <div class="email-header">
+                <i class="fas fa-envelope" style="margin-right: 6px; font-size: 0.8rem;"></i> @escolasembullying.com.br
+            </div>
+        </div>
+        <div class="endereco-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Rua Rio de Janeiro, Capanema - CEP: 88760-000</span>
+            <i class="fas fa-building" style="margin-left: 4px;"></i>
+        </div>
+    </div>
+</div>
+
+<!-- MENU com 9 itens exatos -->
+<div class="nav-menu">
+    <div class="container">
+        <ul class="menu-list">
+            <li><a href="#">O programa</a></li>
+            <li><a href="#">prevenção</a></li>
+            <li><a href="#">componentes</a></li>
+            <li><a href="#">benefícios</a></li>
+            <li><a href="#">livros</a></li>
+            <li><a href="#">cyberbullying</a></li>
+            <li><a href="#">contato</a></li>
+            <li><a href="#">loja</a></li>
+            <li><a href="#">campanhas</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- CONTEÚDO PRINCIPAL: título e texto à esquerda + imagem (menino e menina) à direita -->
+<div class="container main-content">
+    <div class="texto-lado">
+        <h1>Programa Escola Sem Bullying</h1>
+        <p><strong>Transformando o ambiente escolar com acolhimento e respeito.</strong> O Programa Escola Sem Bullying atua na conscientização, identificação precoce de comportamentos agressivos e construção de uma cultura de paz dentro e fora das salas de aula. Acreditamos que cada criança merece estudar sem medo, e por isso desenvolvemos estratégias participativas com alunos, professores e famílias.</p>
+        <p>Com ações lúdicas, rodas de conversa e materiais pedagógicos exclusivos, já impactamos mais de 500 instituições em todo o Brasil. Nossa metodologia é baseada em evidências científicas e na escuta ativa dos estudantes, fortalecendo a empatia, a solidariedade e o combate a qualquer forma de violência, inclusive o cyberbullying.</p>
+        <div class="destaque">
+            <i class="fas fa-hand-peace" style="margin-right: 8px; color:#E63946;"></i> 
+            <strong>Juntos contra o bullying:</strong> Participe das campanhas, acesse nossos livros gratuitos e faça parte dessa rede de proteção.
+        </div>
+    </div>
+    <div class="imagem-lado">
+        <!-- Imagem ilustrativa: menino e menina felizes, ambiente escolar -->
+        <img src="https://placehold.co/600x500/FFF2E0/5a3e2b?text=👧+🧒+Menina+e+Menino+Felizes&font=montserrat" 
+             alt="Menino e menina sorrindo, unidos contra o bullying"
+             style="background:#fce5cd; object-fit: cover; width:100%; max-width:400px; margin:0 auto; display:block;">
+        <!-- Versão alternativa com imagem real via Unsplash (ilustração livre) 
+             Para garantir funcionamento offline, usamos placeholder com desenho, mas caso queira imagem real troque por link confiável -->
+        <p style="margin-top: 12px; font-size: 0.8rem; color:#7d5d42;"><i class="fas fa-users"></i> Amizade e respeito são nossas armas!</p>
+    </div>
+</div>
+
+<!-- RODAPÉ: instagram, facebook, youtube, whatsapp -->
+<footer class="footer">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i> <span>Instagram</span>
+            </a>
+            <a href="#" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i> <span>Facebook</span>
+            </a>
+            <a href="#" target="_blank" aria-label="YouTube">
+                <i class="fab fa-youtube"></i> <span>YouTube</span>
+            </a>
+            <a href="#" target="_blank" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
+            </a>
+        </div>
+        <div class="footer-copy">
+            <p>© 2025 Escola Sem Bullying | Rua Rio de Janeiro, Capanema - CEP: 88760-000 | Todos os direitos reservados.</p>
+            <p style="margin-top: 6px;"><i class="fas fa-heart" style="color:#FFD966;"></i> Programa certificado por instituições de educação e direitos humanos</p>
+        </div>
+    </div>
+</footer>
+
+<!-- (Opcional) Script apenas para garantir links dos menus não recarregarem desnecessariamente -->
+<script>
+    // Impede comportamento padrão apenas para demonstração, mantém navegação suave
+    document.querySelectorAll('.menu-list a, .social-icons a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if(link.getAttribute('href') === '#') {
+                e.preventDefault();
+                // Apenas efeito visual de alerta informativo (pode ser removido)
+                console.log(`Navegação: ${link.innerText.trim()} - menu em construção`);
+                // Opcional: pequeno tooltip leve
+                if(link.closest('.menu-list')) {
+                    alert(`🔍 Seção "${link.innerText}" em desenvolvimento. Em breve mais conteúdo!`);
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
